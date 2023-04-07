@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.9.6 on win32)" generated="20230407 02:05:49.292" rpa="false" schemaversion="3">
+<suite id="s1" name="PetStoreTest" source="C:\Users\macie\Desktop\PyProjects\PetStoreLibrary_ver1\PetStoreTest.robot">
+<test id="s1-t1" name="Create User" line="8">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${user}</var>
+<arg>id=1</arg>
+<arg>username=JonS</arg>
+<arg>firstName=Jon</arg>
+<arg>lastName=Snow</arg>
+<arg>email=jonsnow@gmail.com</arg>
+<arg>password=jonny</arg>
+<arg>phone=1234567890</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230407 02:05:49.407" level="INFO">${user} = {'id': '1', 'username': 'JonS', 'firstName': 'Jon', 'lastName': 'Snow', 'email': 'jonsnow@gmail.com', 'password': 'jonny', 'phone': '1234567890', 'userStatus': '0'}</msg>
+<status status="PASS" starttime="20230407 02:05:49.406" endtime="20230407 02:05:49.408"/>
+</kw>
+<kw name="Create User" library="PetStoreLibrary">
+<var>${response}</var>
+<arg>${user}</arg>
+<msg timestamp="20230407 02:05:49.876" level="INFO">${response} = {'code': 200, 'type': 'unknown', 'message': '1'}</msg>
+<status status="PASS" starttime="20230407 02:05:49.409" endtime="20230407 02:05:49.876"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['code']}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230407 02:05:49.877" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230407 02:05:49.876" endtime="20230407 02:05:49.877"/>
+</kw>
+<status status="PASS" starttime="20230407 02:05:49.404" endtime="20230407 02:05:49.877"/>
+</test>
+<test id="s1-t2" name="Check User" line="14">
+<kw name="Get User By Username" library="PetStoreLibrary">
+<var>${response}</var>
+<arg>JonS</arg>
+<msg timestamp="20230407 02:05:50.371" level="INFO">${response} = {'id': 1, 'username': 'JonS', 'firstName': 'Jon', 'lastName': 'Snow', 'email': 'jonsnow@gmail.com', 'password': 'jonny', 'phone': '1234567890', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20230407 02:05:49.878" endtime="20230407 02:05:50.371"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['username']}</arg>
+<arg>JonS</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:50.371" endtime="20230407 02:05:50.372"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['firstName']}</arg>
+<arg>Jon</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:50.372" endtime="20230407 02:05:50.372"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['lastName']}</arg>
+<arg>Snow</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:50.372" endtime="20230407 02:05:50.373"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['email']}</arg>
+<arg>jonsnow@gmail.com</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:50.373" endtime="20230407 02:05:50.373"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['phone']}</arg>
+<arg>1234567890</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:50.374" endtime="20230407 02:05:50.374"/>
+</kw>
+<status status="PASS" starttime="20230407 02:05:49.878" endtime="20230407 02:05:50.374"/>
+</test>
+<test id="s1-t3" name="Update User" line="23">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${updated_user}</var>
+<arg>id=1</arg>
+<arg>username=JonS</arg>
+<arg>firstName=Jon</arg>
+<arg>lastName=Snow</arg>
+<arg>email=josnow@gmail.com</arg>
+<arg>password=jonny123</arg>
+<arg>phone=9876543210</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230407 02:05:50.376" level="INFO">${updated_user} = {'id': '1', 'username': 'JonS', 'firstName': 'Jon', 'lastName': 'Snow', 'email': 'josnow@gmail.com', 'password': 'jonny123', 'phone': '9876543210', 'userStatus': '0'}</msg>
+<status status="PASS" starttime="20230407 02:05:50.375" endtime="20230407 02:05:50.376"/>
+</kw>
+<kw name="Update User" library="PetStoreLibrary">
+<var>${response}</var>
+<arg>JonS</arg>
+<arg>${updated_user}</arg>
+<msg timestamp="20230407 02:05:50.845" level="INFO">${response} = {'code': 200, 'type': 'unknown', 'message': '1'}</msg>
+<status status="PASS" starttime="20230407 02:05:50.376" endtime="20230407 02:05:50.846"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['code']}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230407 02:05:50.846" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230407 02:05:50.846" endtime="20230407 02:05:50.847"/>
+</kw>
+<status status="PASS" starttime="20230407 02:05:50.375" endtime="20230407 02:05:50.847"/>
+</test>
+<test id="s1-t4" name="Check User Again" line="29">
+<kw name="Get User By Username" library="PetStoreLibrary">
+<var>${response}</var>
+<arg>JonS</arg>
+<msg timestamp="20230407 02:05:51.348" level="INFO">${response} = {'id': 1, 'username': 'JonS', 'firstName': 'Jon', 'lastName': 'Snow', 'email': 'josnow@gmail.com', 'password': 'jonny123', 'phone': '9876543210', 'userStatus': 0}</msg>
+<status status="PASS" starttime="20230407 02:05:50.848" endtime="20230407 02:05:51.348"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['username']}</arg>
+<arg>JonS</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:51.349" endtime="20230407 02:05:51.349"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['firstName']}</arg>
+<arg>Jon</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:51.349" endtime="20230407 02:05:51.350"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['lastName']}</arg>
+<arg>Snow</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:51.350" endtime="20230407 02:05:51.350"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['email']}</arg>
+<arg>josnow@gmail.com</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:51.350" endtime="20230407 02:05:51.351"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['phone']}</arg>
+<arg>9876543210</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230407 02:05:51.351" endtime="20230407 02:05:51.351"/>
+</kw>
+<status status="PASS" starttime="20230407 02:05:50.847" endtime="20230407 02:05:51.351"/>
+</test>
+<test id="s1-t5" name="Delete User" line="38">
+<kw name="Delete User" library="PetStoreLibrary">
+<var>${response}</var>
+<arg>JonS</arg>
+<msg timestamp="20230407 02:05:51.822" level="INFO">${response} = {'code': 200, 'type': 'unknown', 'message': 'JonS'}</msg>
+<status status="PASS" starttime="20230407 02:05:51.352" endtime="20230407 02:05:51.822"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response['code']}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230407 02:05:51.823" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230407 02:05:51.823" endtime="20230407 02:05:51.823"/>
+</kw>
+<status status="PASS" starttime="20230407 02:05:51.352" endtime="20230407 02:05:51.823"/>
+</test>
+<doc>The first version of testing the API of the Swagger Petstore sample website, via custom library "PetStoreLibrary.py"</doc>
+<status status="PASS" starttime="20230407 02:05:49.295" endtime="20230407 02:05:51.824"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="PetStoreTest">PetStoreTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
